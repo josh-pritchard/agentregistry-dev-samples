@@ -4,6 +4,8 @@ import random
 from google.adk import Agent
 from google.adk.tools.tool_context import ToolContext
 
+from .bedrock_model import BedrockClaude
+
 os.environ.setdefault("OTEL_SERVICE_NAME", "agentdemo")
 
 from google.adk.telemetry.setup import maybe_set_otel_providers  # noqa: E402
@@ -39,10 +41,15 @@ async def check_prime(nums: list[int]) -> str:
     return f"{', '.join(str(num) for num in primes)} are prime numbers."
 
 
+# Default: Bedrock-hosted Claude via the in-repo adapter. Uses boto3 creds
+# (SSO locally, workload identity on AgentCore) — no API keys.
+# Override at runtime with AGENT_MODEL if you want a different Claude.
+_MODEL_ID = os.environ.get("AGENT_MODEL", "us.anthropic.claude-sonnet-4-5-20250929-v1:0")
+
 root_agent = Agent(
-    model="gemini-2.5-flash",
+    model=BedrockClaude(model=_MODEL_ID),
     name="agentdemo_agent",
-    description="Dice-rolling demo agent.",
+    description="Dice-rolling sample agent.",
     instruction=(
         "You are a helpful assistant that can roll dice and answer questions "
         "about prime numbers. When asked to roll a die, use the roll_die tool. "

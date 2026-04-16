@@ -2,8 +2,11 @@ agentName: agentdemo
 version: 0.1.0
 framework: adk
 language: python
-modelProvider: gemini
-modelName: gemini-2.5-flash
+# Model auth is handled by the in-repo bedrock_model.py adapter using boto3
+# credentials — the SSO session locally, the workload identity on AgentCore.
+# No API keys.
+modelProvider: bedrock
+modelName: us.anthropic.claude-sonnet-4-5-20250929-v1:0
 description: Dice-rolling sample ADK-Python agent.
 # Set this to a registry path you can push to, e.g.
 #   ghcr.io/<your-github-user>/agentdemo:0.1.0
