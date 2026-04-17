@@ -1,4 +1,4 @@
-agentName: josh-pritchard-agentdemo
+agentName: joshpritchardagentdemo
 image: us-docker.pkg.dev/developers-369321/agentregistry-enterprise-public-nonprod/josh-pritchard/agentdemo:0.1.0
 language: python
 framework: adk
@@ -12,4 +12,4 @@ mcpServers:
       registryURL: http://localhost:8080
       registryServerName: josh-pritchard/everything-server
       registryServerVersion: 0.1.0
-updatedAt: 2026-04-17T16:50:12.565088-04:00
+updatedAt: 2026-04-17T16:57:56.54778-04:00
