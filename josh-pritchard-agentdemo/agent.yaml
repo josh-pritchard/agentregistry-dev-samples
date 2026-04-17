@@ -1,0 +1,15 @@
+agentName: josh-pritchard-agentdemo
+image: us-docker.pkg.dev/developers-369321/agentregistry-enterprise-public-nonprod/josh-pritchard/agentdemo:0.1.0
+language: python
+framework: adk
+modelProvider: bedrock
+modelName: us.anthropic.claude-sonnet-4-5-20250929-v1:0
+description: Dice-rolling sample ADK-Python agent.
+version: 0.1.0
+mcpServers:
+    - name: everything-server
+      type: registry
+      registryURL: http://localhost:8080
+      registryServerName: josh-pritchard/everything-server
+      registryServerVersion: 0.1.0
+updatedAt: 2026-04-17T16:50:12.565088-04:00
