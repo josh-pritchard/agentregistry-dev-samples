@@ -2,3 +2,4 @@ name: everything-server
 version: 0.1.0
 framework: fastmcp-python
 description: Demo MCP server exposing echo, now, add, and reverse tools.
+author: REPLACE_ME_AUTHOR
