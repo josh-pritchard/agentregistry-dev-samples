@@ -1,15 +1,12 @@
+apiVersion: ar.dev/v1alpha1
+kind: agent
 agentName: joshpritchardagentdemo
-image: us-docker.pkg.dev/developers-369321/agentregistry-enterprise-public-nonprod/josh-pritchard/agentdemo:0.1.0
-language: python
+version: "0.1.0"
 framework: adk
+language: python
 modelProvider: bedrock
 modelName: us.anthropic.claude-sonnet-4-5-20250929-v1:0
 description: Dice-rolling sample ADK-Python agent.
-version: 0.1.0
-mcpServers:
-    - name: everything-server
-      type: registry
-      registryURL: http://localhost:8080
-      registryServerName: josh-pritchard/everything-server
-      registryServerVersion: 0.1.0
-updatedAt: 2026-04-17T16:57:56.54778-04:00
+image: us-docker.pkg.dev/developers-369321/agentregistry-enterprise-public-nonprod/josh-pritchard/agentdemo:0.1.0
+telemetryEndpoint: http://k8s-agentreg-agentreg-a9eb0e97de-96db5ef84a4b3c0c.elb.us-east-1.amazonaws.com:4318
+mcpServers: []
