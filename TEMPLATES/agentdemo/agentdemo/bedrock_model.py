@@ -72,13 +72,17 @@ _JSON_SCHEMA_KEYS = {"type", "properties", "required", "description", "items", "
 
 
 def _clean_schema(schema: dict) -> dict:
-    """Strip non-JSON-Schema keys that ADK's model_dump may emit."""
+    """Normalize ADK schema output to valid JSON Schema 2020-12."""
     cleaned = {k: v for k, v in schema.items() if k in _JSON_SCHEMA_KEYS}
+    if "type" in cleaned and isinstance(cleaned["type"], str):
+        cleaned["type"] = cleaned["type"].lower()
     if "properties" in cleaned:
         cleaned["properties"] = {
             k: _clean_schema(v) if isinstance(v, dict) else v
             for k, v in cleaned["properties"].items()
         }
+    if "items" in cleaned and isinstance(cleaned["items"], dict):
+        cleaned["items"] = _clean_schema(cleaned["items"])
     return cleaned
 
 
