@@ -5,6 +5,7 @@ from google.adk import Agent
 from google.adk.tools.tool_context import ToolContext
 
 from .mcp_tools import get_mcp_tools
+from .prompts_loader import build_instruction
 from .bedrock_model import BedrockClaude
 
 os.environ.setdefault("OTEL_SERVICE_NAME", "agentdemo")
