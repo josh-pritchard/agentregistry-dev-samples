@@ -4,9 +4,10 @@ import random
 from google.adk import Agent
 from google.adk.tools.tool_context import ToolContext
 
+from google.adk.models.lite_llm import LiteLlm
+
 from .mcp_tools import get_mcp_tools
 from .prompts_loader import build_instruction
-from .bedrock_model import BedrockClaude
 
 os.environ.setdefault("OTEL_SERVICE_NAME", "agentdemo")
 
@@ -43,14 +44,11 @@ async def check_prime(nums: list[int]) -> str:
     return f"{', '.join(str(num) for num in primes)} are prime numbers."
 
 
-# Default: Bedrock-hosted Claude via the in-repo adapter. Uses boto3 creds
-# (SSO locally, workload identity on AgentCore) — no API keys.
-# Override at runtime with AGENT_MODEL if you want a different Claude.
-_MODEL_ID = os.environ.get("AGENT_MODEL", "us.anthropic.claude-sonnet-4-6")
+_MODEL_ID = os.environ.get("AGENT_MODEL", "bedrock/us.anthropic.claude-sonnet-4-6")
 
 mcp_tools = get_mcp_tools()
 root_agent = Agent(
-    model=BedrockClaude(model=_MODEL_ID),
+    model=LiteLlm(model=_MODEL_ID),
     name="agentdemo",
     description="Dice-rolling sample ADK-Python agent",
     instruction=build_instruction("""
