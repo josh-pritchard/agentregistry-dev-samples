@@ -50,7 +50,7 @@ _MODEL_ID = os.environ.get("AGENT_MODEL", "us.anthropic.claude-sonnet-4-5-202509
 mcp_tools = get_mcp_tools()
 root_agent = Agent(
     model=BedrockClaude(model=_MODEL_ID),
-    name="agentdemo":,
+    name="agentdemo",
     description="Dice-rolling sample ADK-Python agent",
     instruction=build_instruction("""
 You roll dice and answer questions about the outcome of the dice rolls.
