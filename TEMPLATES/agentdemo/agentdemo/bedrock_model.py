@@ -73,8 +73,10 @@ def _tools_param(llm_request: LlmRequest) -> list[dict]:
             schema = (
                 fn.parameters.model_dump(exclude_none=True)
                 if fn.parameters
-                else {"type": "object", "properties": {}}
+                else {}
             )
+            schema.setdefault("type", "object")
+            schema.setdefault("properties", {})
             out.append(
                 {
                     "name": fn.name,
