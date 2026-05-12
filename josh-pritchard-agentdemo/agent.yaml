@@ -15,5 +15,5 @@ spec:
   modelProvider: bedrock
   modelName: us.anthropic.claude-sonnet-4-6
   description: Dice-rolling sample ADK-Python agent.
-  telemetryEndpoint: http://k8s-arejoshp-agentreg-2aa7fda3d0-a5864a1f5c1d1825.elb.us-east-1.amazonaws.com:4318
+  telemetryEndpoint: http://k8s-arejoshp-agentreg-74ad41b2ae-e1098da0434b01ca.elb.us-east-1.amazonaws.com:4318
   mcpServers: []
