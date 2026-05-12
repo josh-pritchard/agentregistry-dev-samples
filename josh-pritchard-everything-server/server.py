@@ -9,13 +9,6 @@ def now() -> str:
     """Return the current UTC time in ISO-8601 format."""
     return datetime.now(timezone.utc).isoformat()
 
-
-@mcp.tool()
-def add(a: float, b: float) -> float:
-    """Add two numbers."""
-    return a + b
-
-
 @mcp.tool()
 def reverse(text: str) -> str:
     """Reverse a string."""
